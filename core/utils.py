@@ -1,8 +1,10 @@
 import json
+from core.config import URL
 
 
 def load_operations():
-    with open('operations.json') as file:
+    print(URL)
+    with open(URL) as file:
         raw_json = file.read()
         operations = json.loads(raw_json)
         return operations
