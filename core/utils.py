@@ -79,7 +79,7 @@ def get_executed_operations(operations):
     выполняется перевод
     """
     operations = [operation for operation in operations if operation.get('state') == 'EXECUTED']
-    operations = [operation for operation in operations if 'from' in operation.keys()]
+    #operations = [operation for operation in operations if 'from' in operation.keys()]
     return operations
 
 
