@@ -13,12 +13,17 @@ def print_operations(url):
     operations = get_executed_operations(operations)
     get_operations = get_last_five_operations(operations, 5)
     for operation in get_operations:
+        #print(operation)
+
         text = operation['date'][:10]
         date = datetime.datetime.strptime(text, '%Y-%m-%d')
         date = datetime.date.strftime(date, '%d.%m.%Y')
         print(f"{date} {operation['description']}")
-        print(f'{" ".join(str(x) for x in transfer(operation['from']))} -> '
-              f'{" ".join(str(x) for x in transfer(operation['to']))}')
+        if 'from' not in operation.keys():
+            print(f"{operation['description']} -> {' '.join(str(x) for x in transfer(operation['to']))}")
+        else:
+            print(f"{' '.join(str(x) for x in transfer(operation['from']))} -> "
+                  f"{' '.join(str(x) for x in transfer(operation['to']))}")
         print(f"{operation['operationAmount']['amount']} руб.\n")
 
 
